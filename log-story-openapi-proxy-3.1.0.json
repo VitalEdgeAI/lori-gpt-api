@@ -1,0 +1,55 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Lori GPT Memory Logger via Proxy",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://osteostronggpt-proxy.fly.dev/log"
+    }
+  ],
+  "paths": {
+    "/log": {
+      "post": {
+        "summary": "Proxy log to Make webhook",
+        "operationId": "logLoriStoryViaProxy",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "timestamp": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string"
+                  },
+                  "emotional_tone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "timestamp",
+                  "prompt",
+                  "response",
+                  "emotional_tone"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Log accepted and relayed via proxy"
+          }
+        }
+      }
+    }
+  }
+}
